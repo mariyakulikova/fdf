@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 10:55:05 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/01/16 17:30:35 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/12 12:25:31 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
+# define ENDL 10
 
 typedef struct s_list
 {

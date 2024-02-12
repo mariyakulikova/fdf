@@ -1,45 +1,66 @@
 NAME = fdf
-CCFLAGS = -Wextra -Wall -Werror -g
 CC = cc
+CCFLAGS = -Wextra -Wall -Werror -g
+RM = rm -f
+DEBUG = -g
+
+HEADDIR = ./includes/
+HEADLIST = fdf.h
+HEADERS = $(addprefix $(HEADDIR), $(HEADLIST))
+
 SRCSDIR = ./srcs/
-SRCSLIST = $(appendix .c, main)
-SRCS = $(appendix $(SRCSDIR), $(SRCSLIST))
+SRCSLIST = main.c
+#SRCS = ./srcs/main.c
+SRCS = $(addprefix $(SRCSDIR), $(SRCSLIST))
+
 OBJSDIR = ./objs/
+OBJSLIST = $(SRCSLIST:.c=.o)
+OBJS = $(addprefix $(OBJSDIR), $(OBJSLIST))
 
+LIBFTDIR = ./libft/
+LIBFT = $(LIBFTDIR)libft.a
 
+MLXDIR = ./minilibx-linux/
+MLX = ${MLXDIR}libmlx.a
 
-
-
-
-
-
-
-
-SRC = your c code
-GETNEXTLINE := get_next_line/*c
-OBJS = $(SRC:.c=.o)
-MLX = minilibx-linux/
-MLX_FLAGS = -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11
+LIBS = -L${LIBFTDIR} -L${MLXDIR} -lmlx -lXext -L/usr/lib/X11 -lX11
+# LIBS			:= -L${LIBFTDIR} -L${MLXDIR} -lft -lmlx -lXext -lX11 -lm
+INCS = -I${HEADDIR} -I${LIBFTDIR} -I${MLXDIR}
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	@if [ ! -d "minilibx-linux" ]; then \
-	git clone https://github.com/42Paris/minilibx-linux.git mlx; \
-	fi
-	@make -C $(MLX_LIB)
-	$(CC) $(CFLAGS) $(OBJS) $(GETNEXTLINE) $(MLX_FLAGS) -o $(NAME)
+$(NAME): $(MLX) $(LIBFT) $(OBJSDIR) $(OBJS)
+	$(CC) $(FLAGS) $(DEBUG) $(OBJS) -o $@ $(LIBS) $(INCS)
+
+$(MLX):
+	git submodule init
+	git submodule update
+	make -C $(MLXDIR)
+
+$(LIBFT):
+	make -C $(LIBFTDIR)
+
+$(OBJSDIR):
+	mkdir -p $(OBJSDIR)
+
+$(OBJSDIR)%.o: $(SRCSDIR)%.c $(HEADERS)
+	$(CC) $(FLAGS) $(DEBUG) $(INCS) -c $< -o $@
 
 clean:
-	rm -rf $(OBJS)
-	rm -rf $(BONUS_OBJS)
+	$(RM) -r $(OBJSDIR)
+	make -C $(LIBFTDIR) clean
+	make -C $(MLXDIR) clean
 
 fclean: clean
-	@if [ -d "minilibx-linux" ]; then \
-	make clean -C minilibx-linux/; \
-	fi
-	rm -f $(NAME)
+	$(RM) $(NAME)
+	make -C $(LIBFTDIR) fclean
 
 re: fclean all
 
 .PHONY: all clean fclean re
+
+#test:			all
+#				./${NAME} test_maps/42.fdf
+
+#bonustest:		bonus
+#				./${BONUSNAME} test_maps/42.fdf

@@ -34,9 +34,8 @@ SRCS	=	ft_atoi.c \
 			ft_substr.c \
 			ft_tolower.c \
 			ft_toupper.c \
-			get_next_line.c
-
-SRCS_B	=	ft_lstadd_back_bonus.c \
+			get_next_line.c \
+			ft_lstadd_back_bonus.c \
 			ft_lstadd_front_bonus.c \
 			ft_lstclear_bonus.c \
 			ft_lstdelone_bonus.c \
@@ -47,29 +46,26 @@ SRCS_B	=	ft_lstadd_back_bonus.c \
 			ft_lstsize_bonus.c
 
 OBJS	= $(SRCS:.c=.o)
-OBJS_B	= $(SRCS_B:.c=.o)
 RM		= rm -f
 LIBC	= ar -rcs
+DEBUG	= -g
 FLAGS	= -Wall -Wextra -Werror
 INCS	= .
 
-.c.o :
-	${CC} ${FLAGS} -c $< -o ${<:.c=.o} -I${INCS}
+%.o: %.c
+	${CC} ${FLAGS} ${DEBUG} -c $< -o $@ -I${INCS}
 
 $(NAME): ${OBJS}
 	${LIBC} $(NAME) $(OBJS)
 
 all: $(NAME)
 
-bonus: $(NAME) $(OBJS_B)
-	${LIBC} $(NAME) $(OBJS_B)
-
 fclean: clean
-	$(RM) $(NAME) $(bonus)
+	$(RM) $(NAME)
 
 clean:
-	$(RM) -f $(OBJS) $(OBJS_B)
+	$(RM) -f $(OBJS)
 
 re: fclean all
 
-.PHONY: all bonus clean fclean re .c.o
+.PHONY: all clean fclean re .c.o
