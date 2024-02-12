@@ -1,6 +1,6 @@
 NAME = fdf
 CC = cc
-CCFLAGS = -Wextra -Wall -Werror -g
+CCFLAGS = -Wextra -Wall -Werror
 RM = rm -f
 DEBUG = -g
 
@@ -23,7 +23,7 @@ LIBFT = $(LIBFTDIR)libft.a
 MLXDIR = ./minilibx-linux/
 MLX = ${MLXDIR}libmlx.a
 
-LIBS = -L${LIBFTDIR} -L${MLXDIR} -lmlx -lXext -L/usr/lib/X11 -lX11
+LIBS = -L${LIBFTDIR} -L${MLXDIR} -lmlx -lXext -L/usr/lib/X11 -lX11 -lm
 # LIBS			:= -L${LIBFTDIR} -L${MLXDIR} -lft -lmlx -lXext -lX11 -lm
 INCS = -I${HEADDIR} -I${LIBFTDIR} -I${MLXDIR}
 
