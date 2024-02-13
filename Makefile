@@ -9,7 +9,7 @@ HEADLIST = fdf.h
 HEADERS = $(addprefix $(HEADDIR), $(HEADLIST))
 
 SRCSDIR = ./srcs/
-SRCSLIST = main.c
+SRCSLIST = main.c hooks.c window.c
 #SRCS = ./srcs/main.c
 SRCS = $(addprefix $(SRCSDIR), $(SRCSLIST))
 
@@ -59,8 +59,8 @@ re: fclean all
 
 .PHONY: all clean fclean re
 
-#test:			all
-#				./${NAME} test_maps/42.fdf
+test: all
+	./$(NAME)
 
 #bonustest:		bonus
 #				./${BONUSNAME} test_maps/42.fdf

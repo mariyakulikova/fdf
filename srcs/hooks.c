@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 13:46:52 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/13 17:30:29 by mkulikov         ###   ########.fr       */
+/*   Created: 2024/02/13 16:27:52 by mkulikov          #+#    #+#             */
+/*   Updated: 2024/02/13 16:57:37 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	main(int argc, char **argv)
+int	key_hook(int keysym, t_vars *vars)
 {
-	t_vars	*vars;
-
-	(void) argc;
-	(void) argv;
-	vars = start_window();
+	if (keysym == XK_Escape)
+		close_window(vars);
 	return (0);
 }
