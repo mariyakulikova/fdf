@@ -6,13 +6,13 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:46:52 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/14 15:27:52 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/14 15:38:41 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	check_argv(int argc, char **argv)
+static int	validate_argv(int argc, char **argv)
 {
 	if (argc > 2)
 	{
@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 {
 	t_vars	vars;
 
-	if (check_argv(argc, argv) == -1)
+	if (validate_argv(argc, argv) == -1)
 		return (1);
 	start_window(&vars);
 	return (0);
