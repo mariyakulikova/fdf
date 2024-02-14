@@ -23,7 +23,7 @@ LIBFT = $(LIBFTDIR)libft.a
 MLXDIR = ./minilibx-linux/
 MLX = ${MLXDIR}libmlx.a
 
-LIBS = -L${LIBFTDIR} -L${MLXDIR} -lmlx -lXext -L/usr/lib/X11 -lX11 -lm
+LIBS = -L${LIBFTDIR} -L${MLXDIR} -lft -lmlx -lXext -L/usr/lib/X11 -lX11 -lm
 # LIBS			:= -L${LIBFTDIR} -L${MLXDIR} -lft -lmlx -lXext -lX11 -lm
 INCS = -I${HEADDIR} -I${LIBFTDIR} -I${MLXDIR}
 

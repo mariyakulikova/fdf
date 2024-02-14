@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 16:21:13 by mkulikov          #+#    #+#             */
-/*   Updated: 2023/11/27 15:16:35 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/14 12:27:46 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static size_t	word_len(char const *s, char c)
 
 static void	ultimate_free(char **arr, size_t idx)
 {
-	while (idx >= 0)
+	while (idx > 0)
 	{
 		idx--;
 		free(*(arr + idx));
