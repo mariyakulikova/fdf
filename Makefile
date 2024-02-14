@@ -9,7 +9,7 @@ HEADLIST = fdf.h
 HEADERS = $(addprefix $(HEADDIR), $(HEADLIST))
 
 SRCSDIR = ./srcs/
-SRCSLIST = main.c hooks.c window.c
+SRCSLIST = main.c hooks.c window.c map.c
 #SRCS = ./srcs/main.c
 SRCS = $(addprefix $(SRCSDIR), $(SRCSLIST))
 

@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:47:12 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/14 15:01:53 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/14 16:13:04 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <errno.h>
-# include "../libft/libft.h"
+# include "libft.h"
 # include "mlx.h"
 
 # define HEIGHT 1080
@@ -45,8 +45,9 @@ typedef struct s_vars {
 	t_img	*img;
 }				t_vars;
 
-int		close_window(t_vars *vars);
-int		key_hook(int keysym, t_vars *vars);
-int		start_window(t_vars *vars);
+int	close_window(t_vars *vars);
+int	key_hook(int keysym, t_vars *vars);
+int	start_window(t_vars *vars);
+int	process_file(char *file, t_vars *vars);
 
 #endif

@@ -1,40 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 13:46:52 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/14 15:43:14 by mkulikov         ###   ########.fr       */
+/*   Created: 2024/02/14 15:42:49 by mkulikov          #+#    #+#             */
+/*   Updated: 2024/02/14 16:30:43 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static int	validate_argv(int argc, char **argv)
+int	process_file(char *file, t_vars *vars)
 {
-	if (argc > 2)
+	int	fd;
+
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
 	{
-		ft_putstr_fd(strerror(E2BIG), 2);
+		perror(strerror(errno));
 		return (-1);
 	}
-	if (argc != 2)
-	{
-		ft_putstr_fd(strerror(EINVAL), 2);
-		return (-1);
-	}
-	return (0);
-}
-
-int	main(int argc, char **argv)
-{
-	t_vars	vars;
-
-	if (validate_argv(argc, argv) == -1)
-		return (1);
-	if (process_file(*(argv + 1), &vars) == -1)
-		return (1);
-	start_window(&vars);
+	
 	return (0);
 }
