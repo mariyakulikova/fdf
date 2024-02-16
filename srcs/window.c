@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manya <manya@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 17:22:34 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/16 11:28:49 by manya            ###   ########.fr       */
+/*   Updated: 2024/02/16 21:36:49 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ int	close_window(t_params *params)
 {
 	mlx_destroy_window(params->mlx_ptr, params->win_ptr);
 	mlx_destroy_display(params->mlx_ptr);
-	free(params->mlx_ptr);
-	exit (0);
+	exit(0);
 	return (0);
 }
 

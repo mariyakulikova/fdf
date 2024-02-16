@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   process_file.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manya <manya@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 15:42:49 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/16 12:07:46 by manya            ###   ########.fr       */
+/*   Updated: 2024/02/16 13:53:32 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	process_file(char *file, t_params *params)
 {
-	int	fd;
+	int		fd;
+	char	*line;
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
@@ -22,6 +23,11 @@ int	process_file(char *file, t_params *params)
 		perror("Oops!");
 		return (1);
 	}
-
+	if (parse_map(fd, params))
+	{
+		close(fd);
+		return (1);
+	}
+	close(fd);
 	return (0);
 }
