@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: manya <manya@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 15:42:49 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/14 16:30:43 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/16 10:38:50 by manya            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	process_file(char *file, t_vars *vars)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 	{
-		perror(strerror(errno));
-		return (-1);
+		perror("Oops!");
+		return (1);
 	}
-	
+
 	return (0);
 }
