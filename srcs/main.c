@@ -6,7 +6,7 @@
 /*   By: manya <manya@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:46:52 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/16 10:42:16 by manya            ###   ########.fr       */
+/*   Updated: 2024/02/16 11:27:45 by manya            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ static int	validate_argv(int argc, char **argv)
 
 int	main(int argc, char **argv)
 {
-	t_vars	vars;
+	t_params	params;
 
 	if (validate_argv(argc, argv))
 		return (1);
-	if (process_file(*(argv + 1), &vars))
+	if (process_file(*(argv + 1), &params))
 		return (1);
-	start_window(&vars);
+	start_window(&params);
 	return (0);
 }

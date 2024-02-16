@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: manya <manya@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:27:52 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/13 16:57:37 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/16 12:07:28 by manya            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	key_hook(int keysym, t_vars *vars)
+int	key_hook(int keysym, t_params *params)
 {
 	if (keysym == XK_Escape)
-		close_window(vars);
+		close_window(params);
 	return (0);
 }

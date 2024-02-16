@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: manya <manya@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:47:12 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/14 16:13:04 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/16 12:07:02 by manya            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,27 @@ typedef struct s_img
 	int		endian;
 }			t_img;
 
-typedef struct s_vars {
+typedef struct s_dot_param {
+	float	x;
+	float	y;
+	float	z;
+	int		shift_x;
+	int		shift_y;
+	double	angle;
+}			t_coord_param;
+
+typedef struct s_params {
 	void	*mlx_ptr;
 	void	*win_ptr;
 	t_img	*img;
-}				t_vars;
+	t_list	**dot_params;
+	int		map_width;
+	int		map_height;
+}			t_params;
 
-int	close_window(t_vars *vars);
-int	key_hook(int keysym, t_vars *vars);
-int	start_window(t_vars *vars);
-int	process_file(char *file, t_vars *vars);
+int	close_window(t_params *params);
+int	key_hook(int keysym, t_params *params);
+int	start_window(t_params *params);
+int	process_file(char *file, t_params *params);
 
 #endif
