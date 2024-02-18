@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:47:12 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/16 21:39:07 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/17 14:54:51 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct s_params {
 	t_list		*map;
 	size_t		map_width;
 	size_t		map_height;
+	t_list		*last_dot;
 }			t_params;
 
 int			close_window(t_params *params);
@@ -64,5 +65,6 @@ int			process_file(char *file, t_params *params);
 int			parse_map(int fd, t_params *params);
 t_dot_param	*new_dot(int x, int y, int z);
 void		free_params(t_params *params);
+void	test(t_params *params); //delete
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manya <manya@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 10:55:05 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/16 12:27:20 by manya            ###   ########.fr       */
+/*   Updated: 2024/02/18 17:42:17 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
-
 }					t_list;
 int		ft_isalpha(int c);
 int		ft_toupper(int c);

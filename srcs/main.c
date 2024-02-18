@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:46:52 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/16 21:39:21 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/18 17:13:00 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ int	main(int argc, char **argv)
 	if (process_file(*(argv + 1), params))
 		return (1);
 	start_window(params);
-	free_params(params);
+	// free_params(params);
 	return (0);
 }
