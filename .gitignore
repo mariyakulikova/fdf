@@ -28,3 +28,5 @@ fdf_linux
 *.la
 *.lo
 
+# test files
+no_permission
