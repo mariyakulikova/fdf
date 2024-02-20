@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 17:22:34 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/20 18:30:16 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/20 18:43:43 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void	start_mlx(t_params *params)
 int	close_window(t_params *params)
 {
 	mlx_loop_end(params->mlx_ptr);
-	// mlx_destroy_image(params->mlx_ptr, params->img.ptr);
+	mlx_destroy_image(params->mlx_ptr, params->img.ptr);
 	mlx_destroy_window(params->mlx_ptr, params->win_ptr);
 	mlx_destroy_display(params->mlx_ptr);
-	return (0);
+	exit(0);
 }
 
