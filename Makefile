@@ -2,7 +2,7 @@ NAME = fdf
 CC = cc
 CCFLAGS = -Wextra -Wall -Werror
 RM = rm -f
-DEBUG = -g
+DEBUG = -g -fsanitize=address
 
 HEADDIR = ./includes/
 HEADLIST = fdf.h

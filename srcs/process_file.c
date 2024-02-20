@@ -6,13 +6,13 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 15:42:49 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/18 17:14:41 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/20 16:20:14 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	process_file(char *file, t_params *params)
+void	process_file(char *file, t_params *params)
 {
 	int		fd;
 	char	*line;
@@ -21,13 +21,7 @@ int	process_file(char *file, t_params *params)
 	if (fd == -1)
 	{
 		perror("Oops!");
-		return (1);
-	}
-	if (parse_map(fd, params))
-	{
-		close(fd);
-		return (1);
+		exit(EXIT_FAILURE);
 	}
 	close(fd);
-	return (0);
 }

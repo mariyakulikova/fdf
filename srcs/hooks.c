@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manya <manya@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:27:52 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/16 12:07:28 by manya            ###   ########.fr       */
+/*   Updated: 2024/02/20 16:17:38 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 int	key_hook(int keysym, t_params *params)
 {
 	if (keysym == XK_Escape)
-		close_window(params);
+		return (close_window(params));
 	return (0);
 }
