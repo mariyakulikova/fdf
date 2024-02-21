@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 16:21:13 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/16 12:38:50 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/21 17:05:36 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	ultimate_free(char **arr, size_t idx)
 	}
 	free(arr);
 }
-
+#include <stdio.h>
 static char	**get_array(char **arr, char const *s, size_t size, char c)
 {
 	size_t	i;
@@ -71,6 +71,7 @@ static char	**get_array(char **arr, char const *s, size_t size, char c)
 			s++;
 		len = word_len(s, c);
 		*(arr + i) = ft_substr(s, 0, len);
+		printf("<-- split: %s -->\n", *(arr + i));
 		if (!*(arr + i))
 		{
 			ultimate_free(arr, i);

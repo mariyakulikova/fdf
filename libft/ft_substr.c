@@ -6,11 +6,13 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 18:17:39 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/21 12:43:55 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/21 17:07:03 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+#include <stdio.h>
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
@@ -18,6 +20,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	i;
 	size_t	substrlen;
 
+	printf("<-- substr: s = %s -->\n", s);
 	if (!s)
 		return (NULL);
 	if (start >= ft_strlen(s))

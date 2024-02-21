@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:47:12 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/21 13:40:51 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/21 16:34:17 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,20 @@ typedef struct s_img
 }			t_img;
 
 typedef struct s_dot {
-
+	float	x;
+	float	y;
+	float	z;
+	int		color;
 }			t_dot;
 
 typedef struct s_params {
-	void		*mlx_ptr;
-	void		*win_ptr;
-	t_img		img;
-	t_list		*map;
-	size_t		map_width;
-	size_t		map_height;
-	t_list		*last_dot;
+	void	*mlx_ptr;
+	void	*win_ptr;
+	t_img	img;
+	t_list	*map;
+	int		map_width;
+	int		map_height;
+	t_list	*last_dot;
 }			t_params;
 
 void	start_mlx(t_params *params);
@@ -59,5 +62,6 @@ void	process_file(char *path, t_params *params);
 void	count_width_and_height(int fd, t_params *params);
 void	free_params(t_params *params);
 void	parse_map(int fd, t_params *params);
+t_dot	*new_dot(int x, int y, int z, int c);
 
 #endif
