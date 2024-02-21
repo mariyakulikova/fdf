@@ -2,7 +2,7 @@ NAME = fdf
 CC = cc
 CCFLAGS = -Wextra -Wall -Werror
 RM = rm -f
-DEBUG = -g -fsanitize=address
+DEBUG = -g
 
 HEADDIR = ./includes/
 HEADLIST = fdf.h
@@ -59,8 +59,8 @@ re: fclean all
 
 .PHONY: all clean fclean re
 
-test: all
-	./$(NAME)
+test: re
+	./$(NAME) test_maps/42.fdf
 
 #bonustest:		bonus
 #				./${BONUSNAME} test_maps/42.fdf
