@@ -6,22 +6,33 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 15:42:49 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/20 16:20:14 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/21 11:38:01 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	process_file(char *file, t_params *params)
+static int	open_file(char *path)
 {
-	int		fd;
-	char	*line;
+	int	fd;
 
-	fd = open(file, O_RDONLY);
+	fd = open(path, O_RDONLY);
 	if (fd == -1)
 	{
 		perror("Oops!");
 		exit(EXIT_FAILURE);
 	}
+	return (fd);
+}
+
+void	process_file(char *path, t_params *params)
+{
+	int	fd;
+
+	fd = open_file(path);
+	count_width_and_height(fd, params);
+	close(fd);
+	fd = open_file(path);
+	parse_map(fd, params);
 	close(fd);
 }

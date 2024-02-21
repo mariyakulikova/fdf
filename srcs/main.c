@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:46:52 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/20 18:08:32 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/21 12:48:06 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,5 @@ int	main(int argc, char **argv)
 		return (0);
 	process_file(*(argv + 1), &params);
 	start_mlx(&params);
-	ultimate_free(&params);
 	return (0);
 }
