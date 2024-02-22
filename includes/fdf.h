@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:47:12 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/21 16:34:17 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/22 16:52:39 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ typedef struct s_img
 }			t_img;
 
 typedef struct s_dot {
-	float	x;
-	float	y;
-	float	z;
-	int		color;
+	float			x;
+	float			y;
+	float			z;
+	unsigned int	color;
 }			t_dot;
 
 typedef struct s_params {
@@ -55,13 +55,15 @@ typedef struct s_params {
 	t_list	*last_dot;
 }			t_params;
 
-void	start_mlx(t_params *params);
-int		close_window(t_params *params);
-int		key_hook(int keysym, t_params *params);
-void	process_file(char *path, t_params *params);
-void	count_width_and_height(int fd, t_params *params);
-void	free_params(t_params *params);
-void	parse_map(int fd, t_params *params);
-t_dot	*new_dot(int x, int y, int z, int c);
+void		start_mlx(t_params *params);
+int			close_window(t_params *params);
+int			key_hook(int keysym, t_params *params);
+void		process_file(char *path, t_params *params);
+void		count_width_and_height(int fd, t_params *params);
+void		free_params(t_params *params);
+void		parse_map(int fd, t_params *params);
+t_dot		*new_dot(int x, int y, int z, int c);
+void		test_print(t_list *map);
+t_params	*params_init(void);
 
 #endif

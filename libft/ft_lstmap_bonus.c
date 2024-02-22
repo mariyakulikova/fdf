@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 18:54:22 by mkulikov          #+#    #+#             */
-/*   Updated: 2023/12/05 12:24:24 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/22 10:57:22 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,39 +35,3 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	}
 	return (head);
 }
-// #include <stdio.h>
-
-// void	*map_function(void *content)
-// {
-
-// 	char *modified_content = ft_strjoin((char *)content, " Modified");
-// 	return (modified_content);
-// }
-// void	del(void *content)
-// {
-// 	free(content);
-// }
-// int main(void)
-// {
-// 	t_list *list = ft_lstnew("Element 1");
-// 	ft_lstadd_back(&list, 0);
-// 	ft_lstadd_back(&list, 0);
-// 	t_list *mapped_list = ft_lstmap(list, &map_function, &del);
-// 	printf("Original List:\n");
-// 	while (list)
-// 	{
-// 		printf("%s\n", (char *)list->content);
-// 		list = list->next;
-// 	}
-// 	printf("\nMapped List:\n");
-// 	while (mapped_list)
-// 	{
-// 		printf("%s\n", (char *)mapped_list->content);
-// 		t_list *temp = mapped_list;
-// 		mapped_list = mapped_list->next;
-// 		free(temp->content); // Free the content before freeing the element
-// 		free(temp);
-// 		ft_lstclear(&list, del);
-// 	}
-// 	return (0);
-// }

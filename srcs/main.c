@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:46:52 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/21 12:48:06 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/22 16:14:54 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,14 @@ static int	validate_argv(int argc, char **argv)
 
 int	main(int argc, char **argv)
 {
-	t_params	params;
+	t_params	*params;
 
+	params = params_init();
+	if (!params)
+		return (1);
 	if (validate_argv(argc, argv))
 		return (0);
-	process_file(*(argv + 1), &params);
-	start_mlx(&params);
+	process_file(*(argv + 1), params);
+	start_mlx(params);
 	return (0);
 }

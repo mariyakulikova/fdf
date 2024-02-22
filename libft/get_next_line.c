@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 12:13:59 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/01/16 17:30:17 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/22 16:45:45 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static char	*ft_read(int fd, char *buf, char *stash)
 	}
 	return (stash);
 }
-
+#include <stdio.h>
 static char	*ft_get_line(char **stash)
 {
 	int		i;

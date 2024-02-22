@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:19:39 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/21 16:51:23 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/22 16:50:56 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ void	count_width_and_height(int fd, t_params *params)
 		if (line)
 			params->map_height++;
 	}
-	printf("<-- count_width_and_height -->\n"); //DELETE
-	printf("map_width = %d\nmap_height = %d\n", params->map_width, params->map_height); //DELETE
 }
 
 static t_dot	*parse_coord(char *s, int x, int y)
@@ -44,16 +42,16 @@ static t_dot	*parse_coord(char *s, int x, int y)
 	t_dot	*dot;
 
 	ptr = ft_strchr(s, ',');
-	// if (!ptr)
-	// 	exit(EXIT_FAILURE);
-	color = ft_strdup(ptr);
-	// if (!color)
-	// 	exit(EXIT_FAILURE);
+	if (ptr)
+	{
+		color = ft_strdup(ptr + 1);
+		c = ft_atoi(color);
+		free(color);
+	}
 	z = ft_atoi(s);
-	c = ft_atoi(color);
 	dot = new_dot(x, y, z, c);
-	// if (!dot)
-	// 	exit(EXIT_FAILURE);
+	if (!dot)
+		exit(EXIT_FAILURE);
 	return (dot);
 }
 
@@ -65,13 +63,14 @@ static void	parse_line(char *line, t_params *params, int y)
 	t_list	*new;
 
 	arr = ft_split(line, ' ');
-	// if (!arr)
-	// 	exit(EXIT_FAILURE);
+	if (!arr)
+		exit(EXIT_FAILURE);
 	i = 0;
 	while (*(arr + i) && (i < params->map_width))
 	{
 		dot = parse_coord(*(arr + i), i, params->map_height);
 		new = ft_lstnew(dot);
+		test_print(new); // DELETE
 		if (!params->last_dot)
 			params->map = new;
 		else
@@ -79,8 +78,10 @@ static void	parse_line(char *line, t_params *params, int y)
 		params->last_dot = new;
 		i++;
 	}
-	printf("<-- parse_line -->\n");
-	printf("i = %d\n", i);
+	i--;
+	while (i >= 0)
+		free(*(arr + i--));
+	free(arr);
 }
 
 void	parse_map(int fd, t_params *params)
@@ -95,6 +96,6 @@ void	parse_map(int fd, t_params *params)
 		if (!line)
 			break ;
 		parse_line(line, params, --y);
+		free(line);
 	}
-
 }
