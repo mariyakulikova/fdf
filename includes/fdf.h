@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:47:12 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/22 16:52:39 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/25 21:19:05 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,6 @@ void		parse_map(int fd, t_params *params);
 t_dot		*new_dot(int x, int y, int z, int c);
 void		test_print(t_list *map);
 t_params	*params_init(void);
+void		draw(t_params *params);
 
 #endif

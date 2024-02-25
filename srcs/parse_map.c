@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:19:39 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/22 16:50:56 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/23 14:09:20 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static void	parse_line(char *line, t_params *params, int y)
 	{
 		dot = parse_coord(*(arr + i), i, params->map_height);
 		new = ft_lstnew(dot);
-		test_print(new); // DELETE
+		// test_print(new); // DELETE
 		if (!params->last_dot)
 			params->map = new;
 		else
