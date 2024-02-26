@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 21:30:09 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/26 16:01:06 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/26 16:05:30 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ t_params	*params_init(void)
 
 void	free_params(t_params *params)
 {
-	int	x;
-	int	y;
-	t_dot ***map;
+	int		x;
+	int		y;
+	t_dot	***map;
 
 	y = params->map_height;
 	map = params->map;
