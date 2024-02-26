@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 21:30:09 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/26 16:05:30 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/26 16:33:43 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ t_dot	*new_dot(int x, int y, int z, int c)
 	dot = (t_dot*)malloc(sizeof(t_dot));
 	if (!dot)
 		return (NULL);
-	dot->x = x;
-	dot->y = y;
-	dot->z = z;
+	dot->x = x * 10;
+	dot->y = y * 10;
+	dot->z = z * 10;
 	// if (c)
 	// 	dot->color = c;
 	// else

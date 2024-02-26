@@ -6,13 +6,13 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 13:26:26 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/26 15:11:50 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/26 16:31:35 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	slope_bigger_then_one(t_img *img, int dx, int dy, t_dot *a, t_dot *b)
+static void	slope_bigger_one(t_img *img, int dx, int dy, t_dot *a, t_dot *b)
 {
 	int	p;
 	int	i;
@@ -35,7 +35,7 @@ void	slope_bigger_then_one(t_img *img, int dx, int dy, t_dot *a, t_dot *b)
 	}
 }
 
-void	slope_less_then_one(t_img *img, int dx, int dy, t_dot *a, t_dot *b)
+static void	slope_less_one(t_img *img, int dx, int dy, t_dot *a, t_dot *b)
 {
 	int	p;
 	int	i;
@@ -70,7 +70,7 @@ void	bresenham(t_img *img, t_dot *a, t_dot *b)
 	dx = b->x - a->x;
 	dy = b->y - a->y;
 	if ((int)abs(dx) > (int)abs(dy))
-		slope_less_then_one(img, dx, dy, a, b);
+		slope_less_one(img, dx, dy, a, b);
 	else
-		slope_bigger_then_one(img, dx, dy, a, b);
+		slope_bigger_one(img, dx, dy, a, b);
 }

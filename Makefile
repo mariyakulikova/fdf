@@ -18,6 +18,7 @@ SRCSLIST =	main.c \
 			test.c \
 			draw.c \
 			bresenham.c \
+			projection.c \
 #SRCS = ./srcs/main.c
 SRCS = $(addprefix $(SRCSDIR), $(SRCSLIST))
 
