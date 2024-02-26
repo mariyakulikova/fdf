@@ -9,7 +9,15 @@ HEADLIST = fdf.h
 HEADERS = $(addprefix $(HEADDIR), $(HEADLIST))
 
 SRCSDIR = ./srcs/
-SRCSLIST = main.c hooks.c window.c parse_map.c process_file.c params.c test.c draw.c
+SRCSLIST =	main.c \
+			hooks.c \
+			window.c \
+			parse_map.c \
+			process_file.c \
+			params.c \
+			test.c \
+			draw.c \
+			bresenham.c \
 #SRCS = ./srcs/main.c
 SRCS = $(addprefix $(SRCSDIR), $(SRCSLIST))
 

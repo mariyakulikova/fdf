@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:19:39 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/26 10:57:01 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/26 14:55:12 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,22 +58,25 @@ t_dot	*parse_coord(char *s, int x, int y)
 static void	parse_line(char *line, t_params *params, int y)
 {
 	char	**arr;
-	int		i;
+	int		x;
+	t_dot	*dot;
+	t_dot	***map;
 
 	arr = ft_split(line, ' ');
 	if (!arr)
 		exit(EXIT_FAILURE);
-	i = 0;
-	*(params->tab + y) = (int *)malloc(sizeof(int) * params->map_width);
-	while (*(arr + i) && (i < params->map_width))
+	x = 0;
+	map = params->map;
+	*(map + y) = (t_dot **)malloc(sizeof(t_dot *) * params->map_width);
+	while (*(arr + x) && (x < params->map_width))
 	{
-		*(*(params->tab + y) + i) = ft_atoi(*(arr + i));
-		add_dot(params, *(arr + i), i, params->map_height);
-		i++;
+		dot = parse_coord(*(arr + x), x, y);
+		*(*(map + y) + x) = dot;
+		x++;
 	}
-	i--;
-	while (i >= 0)
-		free(*(arr + i--));
+	x--;
+	while (x >= 0)
+		free(*(arr + x--));
 	free(arr);
 }
 
@@ -83,8 +86,8 @@ void	parse_map(int fd, t_params *params)
 	size_t	y;
 
 	y = params->map_height;
-	params->tab = (int **)malloc(sizeof(int *) * y);
-	if (!params->tab)
+	params->map = (t_dot ***)malloc(sizeof(t_dot **) * y);
+	if (!params->map)
 		exit(EXIT_FAILURE);
 	while (1)
 	{
