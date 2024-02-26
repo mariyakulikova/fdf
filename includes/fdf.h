@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:47:12 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/25 21:19:05 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/26 11:03:01 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct s_params {
 	void	*win_ptr;
 	t_img	img;
 	t_list	*map;
+	int		**tab;
 	int		map_width;
 	int		map_height;
 	t_list	*last_dot;
@@ -65,6 +66,8 @@ void		parse_map(int fd, t_params *params);
 t_dot		*new_dot(int x, int y, int z, int c);
 void		test_print(t_list *map);
 t_params	*params_init(void);
-void		draw(t_params *params);
+void		draw_map(t_params *params);
+t_dot		*parse_coord(char *s, int x, int y);
+void		add_dot(t_params *params, char *i, int x, int y);
 
 #endif

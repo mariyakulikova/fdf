@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 20:46:23 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/25 21:33:39 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/26 11:14:37 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	my_pixel_put(t_img *img, int x, int y, int color)
 	*((unsigned int *)(img->addr + offset)) = color;
 }
 
-void	bresenham(t_img *img, t_dot *dot1, t_dot *dot2)
+void	bresenham(t_img *img, int x1, int y1, int x2, int y2)
 {
 	int	x;
 	int	y;
@@ -30,10 +30,10 @@ void	bresenham(t_img *img, t_dot *dot1, t_dot *dot2)
 	int	dy;
 	int	p;
 
-	x = dot1->x;
-	y = dot1->y;
+	x = x1;
+	y = y;
 	dx = dot2->x - dot1->x;
-	dy = dot2->y - dot2->y;
+	dy = dot2->y - dot1->y;
 	p = 2 * dx - dy;
 	while (x <= dot2->x)
 	{
@@ -49,19 +49,29 @@ void	bresenham(t_img *img, t_dot *dot1, t_dot *dot2)
 	}
 }
 
-void	draw(t_params *params)
+void	draw_map(t_params *params)
 {
 	t_list	*current;
 	t_img	*img;
+	int		i;
+	int		j;
 
 	current = params->map;
 	img = &params->img;
-	int i = 0;
 	while (current->next)
 	{
 		bresenham(img, current->content, current->next->content);
 		current = current->next;
-		i++;
+	}
+	i = 0;
+	while (i < params->map_height)
+	{
+		j = 0;
+		while (j < params->map_width)
+		{
+			/* code */
+		}
+
 	}
 	mlx_put_image_to_window(params->mlx_ptr,
 							params->win_ptr,

@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 21:30:09 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/25 21:19:36 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/26 10:49:06 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ t_dot	*new_dot(int x, int y, int z, int c)
 	dot = (t_dot*)malloc(sizeof(t_dot));
 	if (!dot)
 		return (NULL);
-	dot->x = x + 50;
-	dot->y = y + 50;
+	dot->x = x;
+	dot->y = y;
 	dot->z = z;
 	// if (c)
 	// 	dot->color = c;
@@ -48,4 +48,18 @@ void	free_params(t_params *params)
 	free(params->mlx_ptr);
 	ft_lstclear(&params->map, free);
 	free(params);
+}
+
+void	add_dot(t_params *params, char *i, int x, int y)
+{
+	t_dot	*dot;
+	t_list	*new;
+
+	dot = parse_coord(i, x, params->map_height);
+	new = ft_lstnew(dot);
+	if (!params->last_dot)
+		params->map = new;
+	else
+		params->last_dot->next = new;
+	params->last_dot = new;
 }
