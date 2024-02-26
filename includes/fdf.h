@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:47:12 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/26 14:50:22 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/26 15:01:10 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ typedef struct s_params {
 	t_dot	***map;
 	int		map_width;
 	int		map_height;
-	t_list	*last_dot;
 }			t_params;
 
 void		start_mlx(t_params *params);
