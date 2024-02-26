@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 13:26:26 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/26 14:56:17 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/26 15:11:50 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,22 +41,22 @@ void	slope_less_then_one(t_img *img, int dx, int dy, t_dot *a, t_dot *b)
 	int	i;
 
 	i = -1;
-	p = 2 * (int)fabs(dy) - (int)fabs(dx);
-	while (++i < (int)fabs(dx))
+	p = 2 * (int)abs(dy) - (int)abs(dx);
+	while (++i < (int)abs(dx))
 	{
 		if (dx > 0)
 			a->x += 1;
 		else
 			a->x -= 1;
 		if (p < 0)
-			p = p + 2 * (int)fabs(dy);
+			p = p + 2 * (int)abs(dy);
 		else
 		{
 			if (dy > 0)
 				a->y += 1;
 			else
 				a->y -= 1;
-			p = p + 2 * (int)fabs(dy) - 2 * (int)fabs(dx);
+			p = p + 2 * (int)abs(dy) - 2 * (int)abs(dx);
 		}
 		my_pixel_put(img, a->x, a->y, 0xFFFFFF);
 	}
@@ -69,8 +69,8 @@ void	bresenham(t_img *img, t_dot *a, t_dot *b)
 
 	dx = b->x - a->x;
 	dy = b->y - a->y;
-	if ((int)fabs(dx) > (int)fabs(dy))
+	if ((int)abs(dx) > (int)abs(dy))
 		slope_less_then_one(img, dx, dy, a, b);
 	else
-		slope_bigger_than_one(img, dx, dy, a, b);
+		slope_bigger_then_one(img, dx, dy, a, b);
 }

@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 21:30:09 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/26 10:49:06 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/26 16:01:06 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ t_params	*params_init(void)
 	if (!params)
 		return (NULL);
 	params->map = NULL;
-	params->last_dot = NULL;
 	params->map_height = 0;
 	params->map_width = 0;
 	return (params);
@@ -45,21 +44,20 @@ t_params	*params_init(void)
 
 void	free_params(t_params *params)
 {
+	int	x;
+	int	y;
+	t_dot ***map;
+
+	y = params->map_height;
+	map = params->map;
 	free(params->mlx_ptr);
-	ft_lstclear(&params->map, free);
+	while (--y >= 0)
+	{
+		x = params->map_width;
+		while (--x >= 0)
+			free(map[y][x]);
+		free(map[y]);
+	}
+	free(map);
 	free(params);
-}
-
-void	add_dot(t_params *params, char *i, int x, int y)
-{
-	t_dot	*dot;
-	t_list	*new;
-
-	dot = parse_coord(i, x, params->map_height);
-	new = ft_lstnew(dot);
-	if (!params->last_dot)
-		params->map = new;
-	else
-		params->last_dot->next = new;
-	params->last_dot = new;
 }
