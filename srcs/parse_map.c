@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:19:39 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/26 15:53:11 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/27 16:04:02 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	count_width_and_height(int fd, t_params *params)
 			params->map_height++;
 	}
 }
-int q = 0;
 
 t_dot	*parse_coord(char *s, int x, int y)
 {
@@ -51,7 +50,6 @@ t_dot	*parse_coord(char *s, int x, int y)
 	}
 	z = ft_atoi(s);
 	dot = new_dot(x, y, z, c);
-	q++;
 	if (!dot)
 		exit(EXIT_FAILURE);
 	return (dot);
@@ -100,5 +98,4 @@ void	parse_map(int fd, t_params *params)
 		parse_line(line, params, --y);
 		free(line);
 	}
-	printf("q - %d\n", q);
 }

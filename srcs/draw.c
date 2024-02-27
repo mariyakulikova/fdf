@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 20:46:23 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/26 16:35:29 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/27 16:27:03 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	my_pixel_put(t_img *img, int x, int y, int color)
 {
 	int	offset;
 
+	if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT)
+		return ;
 	offset = (img->line_len * y) + (x * (img->bpp / 8));
 	*((unsigned int *)(img->addr + offset)) = color;
 }
@@ -34,7 +36,6 @@ void	draw_map(t_params *params)
 		x = 0;
 		while (x < params->map_width - 1)
 		{
-			printf("tut");
 			// isometric(map[y][x]);
 			// isometric(map[y][x + 1]);
 			// isometric(map[y + 1][x]);

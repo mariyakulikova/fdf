@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:47:12 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/26 16:25:47 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/27 16:30:11 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ t_dot		*parse_coord(char *s, int x, int y);
 void		bresenham(t_img *img, t_dot *a, t_dot *b);
 void		my_pixel_put(t_img *img, int x, int y, int color);
 void		isometric(t_dot *dot);
+void		transform_iso(t_params *params);
 
 #endif

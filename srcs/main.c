@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:46:52 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/22 16:14:54 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/27 16:28:01 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	main(int argc, char **argv)
 	if (validate_argv(argc, argv))
 		return (0);
 	process_file(*(argv + 1), params);
+	transform_iso(params);
 	start_mlx(params);
 	return (0);
 }

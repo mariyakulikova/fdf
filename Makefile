@@ -38,7 +38,7 @@ INCS = -I${HEADDIR} -I${LIBFTDIR} -I${MLXDIR}
 
 all: $(NAME)
 
-$(NAME): $(MLX) $(LIBFT) $(OBJSDIR) $(OBJS)
+$(NAME): $(LIBFT) $(OBJSDIR) $(OBJS)
 	$(CC) $(FLAGS) $(DEBUG) $(OBJS) -o $@ $(LIBS) $(INCS)
 
 $(MLX):

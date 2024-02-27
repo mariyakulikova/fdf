@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 17:22:34 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/26 15:34:20 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/27 15:31:01 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,6 @@ void	start_mlx(t_params *params)
 									&params->img.bpp, \
 									&params->img.line_len, \
 									&params->img.endian);
-	printf("Line_len %d <-> SIDE_LEN %d\n"
-			"bpp %d\n"
-			"endian %d\n", params->img.line_len, WIDTH, params->img.bpp, params->img.endian); // DELETE
 	mlx_key_hook(params->win_ptr, key_hook, params);
 	mlx_hook(params->win_ptr, DestroyNotify, 0, close_window, params);
 	draw_map(params);
