@@ -6,26 +6,35 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 16:40:19 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/28 16:42:51 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/28 17:12:13 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	x_rot(t_dot *dot, double teta)
+void	isometric(t_dot *dot, double angle)
 {
-	dot->y = dot->y * cos(teta) + dot->z * sin(teta);
-	dot->z = -(dot->y) * sin(teta) + dot->z * (cos(teta));
+	int	temp;
+
+	temp = dot->x;
+	dot->x = ((temp - dot->y) * cos(angle));
+	dot->y = ((temp + dot->y) * sin(angle) - dot->z);
 }
 
-void	y_rot(t_dot *dot, double teta)
+void	x_rot(t_dot *dot, double angle)
 {
-	dot->x = dot->x * cos(teta) + dot->z * sin(teta);
-	dot->z = -(dot->x) * sin(teta) + dot->z * (cos(teta));
+	dot->y = dot->y * cos(angle) + dot->z * sin(angle);
+	dot->z = -(dot->y) * sin(angle) + dot->z * (cos(angle));
 }
 
-void	z_rot(t_dot *dot, double teta)
+void	y_rot(t_dot *dot, double angle)
 {
-	dot->x = dot->x * cos(teta) - dot->y * sin(teta);
-	dot->y = (dot->x) * sin(teta) + dot->y * (cos(teta));
+	dot->x = dot->x * cos(angle) + dot->z * sin(angle);
+	dot->z = -(dot->x) * sin(angle) + dot->z * (cos(angle));
+}
+
+void	z_rot(t_dot *dot, double angle)
+{
+	dot->x = dot->x * cos(angle) - dot->y * sin(angle);
+	dot->y = (dot->x) * sin(angle) + dot->y * (cos(angle));
 }

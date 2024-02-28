@@ -6,20 +6,13 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:23:23 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/28 16:22:27 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/28 17:13:21 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	isometric(t_dot *dot)
-{
-	int	temp;
 
-	temp = dot->x;
-	dot->x = ((temp - dot->y) * cos(0.523599));
-	dot->y = ((temp + dot->y) * sin(0.523599) - dot->z);
-}
 
 void	zoom(t_dot *dot, int scale, int z_scale)
 {
@@ -46,7 +39,7 @@ void	transform_map(t_params *params)
 		while (++x < params->map_width)
 		{
 			zoom(params->map[y][x], params->scale, params-> z_scale);
-			isometric(params->map[y][x]);
+			isometric(params->map[y][x], params->angle);
 			shift(params->map[y][x], params->shift);
 		}
 	}

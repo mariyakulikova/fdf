@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 13:26:26 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/28 17:03:13 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/28 17:18:44 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	slope_bigger_one(t_img *img, int dx, int dy, t_dot a, t_dot b)
 
 	i = 0;
 	p = 2 * dx - dy;
-	my_pixel_put(img, a.x, a.y, 0xFFFFFF);
+	my_pixel_put(img, a.x, a.y, 0xff0000);
 	while (i < dy)
 	{
 		a.y += 1;

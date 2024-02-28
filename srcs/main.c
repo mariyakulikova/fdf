@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:46:52 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/28 15:03:11 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/28 17:09:39 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ static int	validate_argv(int argc, char **argv)
 		ft_putstr_fd("No argument\n", 2);
 	return (0);
 }
-
-
 
 int	main(int argc, char **argv)
 {
