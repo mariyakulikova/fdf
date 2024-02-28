@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:19:39 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/28 11:18:55 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/28 16:07:05 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ t_dot	*parse_coord(char *s, int x, int y)
 		c = ft_atoi(color);
 		free(color);
 	}
+	else
+		c = 0xFFFFFF;
 	z = ft_atoi(s);
 	dot = new_dot(x, y, z, c);
 	if (!dot)
@@ -75,7 +77,6 @@ static void	parse_line(char *line, t_params *params, int y)
 		x++;
 	}
 	x--;
-
 	while (x >= 0)
 		free(*(arr + x--));
 	free(arr);

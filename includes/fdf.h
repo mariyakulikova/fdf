@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:47:12 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/28 15:21:24 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/28 17:02:50 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void		test_print(t_list *map);
 t_params	*params_init(void);
 void		draw_map(t_params *params);
 t_dot		*parse_coord(char *s, int x, int y);
-void		bresenham(t_img *img, t_dot *a, t_dot *b);
+void		bresenham(t_img *img, t_dot a, t_dot b);
 void		my_pixel_put(t_img *img, int x, int y, int color);
 void		isometric(t_dot *dot);
 void		transform_map(t_params *params);

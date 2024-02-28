@@ -6,36 +6,36 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 13:26:26 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/26 16:31:35 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/28 17:03:13 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	slope_bigger_one(t_img *img, int dx, int dy, t_dot *a, t_dot *b)
+static void	slope_bigger_one(t_img *img, int dx, int dy, t_dot a, t_dot b)
 {
 	int	p;
 	int	i;
 
 	i = 0;
 	p = 2 * dx - dy;
-	my_pixel_put(img, a->x, a->y, 0xFFFFFF);
+	my_pixel_put(img, a.x, a.y, 0xFFFFFF);
 	while (i < dy)
 	{
-		a->y += 1;
+		a.y += 1;
 		if (p < 0)
 			p = p + 2 * dx;
 		else
 		{
-			a->x += 1;
+			a.x += 1;
 			p = p + 2 * dx - 2 * dy;
 		}
-		my_pixel_put(img, a->x, a->y, 0xFFFFFF);
+		my_pixel_put(img, a.x, a.y, 0xff0000);
 		i++;
 	}
 }
 
-static void	slope_less_one(t_img *img, int dx, int dy, t_dot *a, t_dot *b)
+static void	slope_less_one(t_img *img, int dx, int dy, t_dot a, t_dot b)
 {
 	int	p;
 	int	i;
@@ -45,30 +45,30 @@ static void	slope_less_one(t_img *img, int dx, int dy, t_dot *a, t_dot *b)
 	while (++i < (int)abs(dx))
 	{
 		if (dx > 0)
-			a->x += 1;
+			a.x += 1;
 		else
-			a->x -= 1;
+			a.x -= 1;
 		if (p < 0)
 			p = p + 2 * (int)abs(dy);
 		else
 		{
 			if (dy > 0)
-				a->y += 1;
+				a.y += 1;
 			else
-				a->y -= 1;
+				a.y -= 1;
 			p = p + 2 * (int)abs(dy) - 2 * (int)abs(dx);
 		}
-		my_pixel_put(img, a->x, a->y, 0xFFFFFF);
+		my_pixel_put(img, a.x, a.y, 0xff0000);
 	}
 }
 
-void	bresenham(t_img *img, t_dot *a, t_dot *b)
+void	bresenham(t_img *img, t_dot a, t_dot b)
 {
 	int	dx;
 	int	dy;
 
-	dx = b->x - a->x;
-	dy = b->y - a->y;
+	dx = b.x - a.x;
+	dy = b.y - a.y;
 	if ((int)abs(dx) > (int)abs(dy))
 		slope_less_one(img, dx, dy, a, b);
 	else
