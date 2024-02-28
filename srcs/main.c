@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:46:52 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/27 16:28:01 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/28 15:03:11 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ int	main(int argc, char **argv)
 	if (validate_argv(argc, argv))
 		return (0);
 	process_file(*(argv + 1), params);
-	transform_iso(params);
+	transform_map(params);
 	start_mlx(params);
+	draw_map(params);
+	mlx_loop(params->mlx_ptr);
 	return (0);
 }

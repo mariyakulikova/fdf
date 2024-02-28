@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   projection.c                                       :+:      :+:    :+:   */
+/*   transform.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:23:23 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/28 11:29:48 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/28 15:34:57 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,33 @@ void	isometric(t_dot *dot)
 	dot->y = ((temp + dot->y) * sin(0.523599) - dot->z) + HEIGHT / 3;
 }
 
-void	transform_iso(t_params *params)
+void	zoom(t_dot *dot, int scale, int z_scale)
+{
+	dot->x *= scale;
+	dot->y *= scale;
+	dot->z *= z_scale;
+}
+
+void	shift(t_dot *dot, int shift)
+{
+	dot->x += shift;
+	dot->y += shift;
+}
+
+void	transform_map(t_params *params)
 {
 	int	y;
 	int	x;
 
-	y = 0;
-	while (y < params->map_height)
+	y = -1;
+	while (++y < params->map_height)
 	{
-		x = 0;
-		while (x < params->map_width)
+		x = -1;
+		while (++x < params->map_width)
 		{
+			zoom(params->map[y][x], params->scale, params-> z_scale);
 			isometric(params->map[y][x]);
-			x++;
+			shift(params->map[y][x], params->shift);
 		}
-		y++;
 	}
 }

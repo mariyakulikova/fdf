@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:47:12 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/28 11:12:47 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/28 15:21:24 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ typedef struct s_img
 }			t_img;
 
 typedef struct s_dot {
-	float			x;
-	float			y;
-	float			z;
+	int			x;
+	int			y;
+	int			z;
 	unsigned int	color;
 }			t_dot;
 
@@ -52,6 +52,9 @@ typedef struct s_params {
 	t_dot	***map;
 	int		map_width;
 	int		map_height;
+	int		shift;
+	int		scale;
+	int		z_scale;
 }			t_params;
 
 void		start_mlx(t_params *params);
@@ -69,6 +72,6 @@ t_dot		*parse_coord(char *s, int x, int y);
 void		bresenham(t_img *img, t_dot *a, t_dot *b);
 void		my_pixel_put(t_img *img, int x, int y, int color);
 void		isometric(t_dot *dot);
-void		transform_iso(t_params *params);
+void		transform_map(t_params *params);
 
 #endif

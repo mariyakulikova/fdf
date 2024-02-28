@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 20:46:23 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/28 11:51:23 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/28 15:45:59 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,18 @@ void	draw_map(t_params *params)
 	int		y;
 	t_dot	***map;
 
-	y = 0;
+	y = -1;
 	map = params->map;
-	while (y < params->map_height - 1)
+	while (++y < params->map_height)
 	{
-		x = 0;
-		while (x < params->map_width - 1)
+		x = -1;
+		while (++x < params->map_width)
 		{
-			bresenham(&params->img, map[y][x], map[y][x + 1]);
-			bresenham(&params->img, map[y][x], map[y + 1][x]);
-			x++;
+			if (x < params->map_width - 1)
+				bresenham(&params->img, map[y][x], map[y][x + 1]);
+			if (y < params->map_height - 1)
+				bresenham(&params->img, map[y][x], map[y + 1][x]);
 		}
-		y++;
 	}
 	mlx_put_image_to_window(params->mlx_ptr, \
 							params->win_ptr, \
