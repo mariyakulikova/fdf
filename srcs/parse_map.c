@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:19:39 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/27 16:04:02 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/28 11:18:55 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,18 +84,19 @@ static void	parse_line(char *line, t_params *params, int y)
 void	parse_map(int fd, t_params *params)
 {
 	char	*line;
-	size_t	y;
+	int		y;
 
-	y = params->map_height;
-	params->map = (t_dot ***)malloc(sizeof(t_dot **) * y);
+	y = 0;
+	params->map = (t_dot ***)malloc(sizeof(t_dot **) * params->map_height);
 	if (!params->map)
 		exit(EXIT_FAILURE);
-	while (1)
+	while (y < params->map_height)
 	{
 		line = get_next_line(fd);
 		if (!line)
 			break ;
-		parse_line(line, params, --y);
+		parse_line(line, params, y);
 		free(line);
+		y++;
 	}
 }

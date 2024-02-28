@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 20:46:23 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/27 16:27:03 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/28 11:51:23 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,6 @@ void	draw_map(t_params *params)
 		x = 0;
 		while (x < params->map_width - 1)
 		{
-			// isometric(map[y][x]);
-			// isometric(map[y][x + 1]);
-			// isometric(map[y + 1][x]);
 			bresenham(&params->img, map[y][x], map[y][x + 1]);
 			bresenham(&params->img, map[y][x], map[y + 1][x]);
 			x++;

@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:23:23 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/27 16:29:57 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/28 11:29:48 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 
 void	isometric(t_dot *dot)
 {
-	dot->x = (dot->x - dot->y) * cos(0.523599);
-	dot->y = (dot->x + dot->y) * sin(0.523599) - dot->z;
+	int	temp;
+
+	temp = dot->x;
+	dot->x = ((temp - dot->y) * cos(0.523599)) + WIDTH / 3;
+	dot->y = ((temp + dot->y) * sin(0.523599) - dot->z) + HEIGHT / 3;
 }
 
 void	transform_iso(t_params *params)

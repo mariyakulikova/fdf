@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:47:12 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/27 16:30:11 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/02/28 11:12:47 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ typedef struct s_img
 }			t_img;
 
 typedef struct s_dot {
-	int			x;
-	int			y;
-	int			z;
+	float			x;
+	float			y;
+	float			z;
 	unsigned int	color;
 }			t_dot;
 
