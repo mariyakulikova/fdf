@@ -6,71 +6,55 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 13:26:26 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/28 17:18:44 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/03/04 12:39:00 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	slope_bigger_one(t_img *img, int dx, int dy, t_dot a, t_dot b)
+static void	setup_vars(t_bresenham_var *vars, t_dot a, t_dot b)
 {
-	int	p;
-	int	i;
-
-	i = 0;
-	p = 2 * dx - dy;
-	my_pixel_put(img, a.x, a.y, 0xff0000);
-	while (i < dy)
-	{
-		a.y += 1;
-		if (p < 0)
-			p = p + 2 * dx;
-		else
-		{
-			a.x += 1;
-			p = p + 2 * dx - 2 * dy;
-		}
-		my_pixel_put(img, a.x, a.y, 0xff0000);
-		i++;
-	}
-}
-
-static void	slope_less_one(t_img *img, int dx, int dy, t_dot a, t_dot b)
-{
-	int	p;
-	int	i;
-
-	i = -1;
-	p = 2 * (int)abs(dy) - (int)abs(dx);
-	while (++i < (int)abs(dx))
-	{
-		if (dx > 0)
-			a.x += 1;
-		else
-			a.x -= 1;
-		if (p < 0)
-			p = p + 2 * (int)abs(dy);
-		else
-		{
-			if (dy > 0)
-				a.y += 1;
-			else
-				a.y -= 1;
-			p = p + 2 * (int)abs(dy) - 2 * (int)abs(dx);
-		}
-		my_pixel_put(img, a.x, a.y, 0xff0000);
-	}
-}
-
-void	bresenham(t_img *img, t_dot a, t_dot b)
-{
-	int	dx;
-	int	dy;
-
-	dx = b.x - a.x;
-	dy = b.y - a.y;
-	if ((int)abs(dx) > (int)abs(dy))
-		slope_less_one(img, dx, dy, a, b);
+	vars->dx = b.x - a.x;
+	vars->dy = b.y - a.y;
+	vars->x_er = 0;
+	vars->y_er = 0;
+	if (vars->dx > 0)
+		vars->x_inc = 1;
+	else if (vars->dx != 0)
+		vars->x_inc = -1;
+	if (vars->dy > 0)
+		vars->y_inc = 1;
+	else if (vars->dy != 0)
+		vars->y_inc = -1;
+	vars->dx = abs(vars->dx);
+	vars->dy = abs(vars->dy);
+	if (vars->dx > vars->dy)
+		vars->d = vars->dx;
 	else
-		slope_bigger_one(img, dx, dy, a, b);
+		vars->d = vars->dy;
+}
+
+void	bresenham8(t_img *img, t_dot a, t_dot b)
+{
+	t_bresenham_var	vars;
+	int				i;
+
+	setup_vars(&vars, a, b);
+	i = 0;
+	while (i++ < vars.d)
+	{
+		my_pixel_put(img, a.x, a.y, 0xFF0000);
+		vars.x_er += vars.dx;
+		vars.y_er += vars.dy;
+		if (vars.x_er >= vars.d)
+		{
+			a.x += vars.x_inc;
+			vars.x_er -= vars.d;
+		}
+		if (vars.y_er >= vars.d)
+		{
+			a.y += vars.y_inc;
+			vars.y_er -= vars.d;
+		}
+	}
 }

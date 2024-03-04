@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 20:46:23 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/28 16:59:01 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/03/04 12:38:09 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ void	draw_map(t_params *params)
 		while (++x < params->map_width)
 		{
 			if (x < params->map_width - 1)
-				bresenham(&params->img, *map[y][x], *map[y][x + 1]);
+				bresenham8(&params->img, *map[y][x], *map[y][x + 1]);
 			if (y < params->map_height - 1)
-				bresenham(&params->img, *map[y][x], *map[y + 1][x]);
+				bresenham8(&params->img, *map[y][x], *map[y + 1][x]);
 		}
 	}
 	mlx_put_image_to_window(params->mlx_ptr, \

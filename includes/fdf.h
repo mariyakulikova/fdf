@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:47:12 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/28 17:17:08 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/03/04 12:32:46 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,20 @@
 # include "libft.h"
 # include "mlx.h"
 
-# define HEIGHT 600
-# define WIDTH 900
+# define HEIGHT 900
+# define WIDTH 1400
 # define TITLE "FdF"
+
+typedef struct s_bresenham_var {
+	int	dx;
+	int	x_inc;
+	int	dy;
+	int	y_inc;
+	int	x_er;
+	int	y_er;
+	int	d;
+}			t_bresenham_var;
+
 
 typedef struct s_img
 {
@@ -70,7 +81,7 @@ void		test_print(t_list *map);
 t_params	*params_init(void);
 void		draw_map(t_params *params);
 t_dot		*parse_coord(char *s, int x, int y);
-void		bresenham(t_img *img, t_dot a, t_dot b);
+void		bresenham8(t_img *img, t_dot a, t_dot b);
 void		my_pixel_put(t_img *img, int x, int y, int color);
 void		isometric(t_dot *dot, double angle);
 void		transform_map(t_params *params);
