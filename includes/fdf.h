@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:47:12 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/03/04 12:32:46 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/03/05 20:40:13 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 
 # define HEIGHT 900
 # define WIDTH 1400
+# define PADDING 0.8
+# define STEP 10
 # define TITLE "FdF"
 
 typedef struct s_bresenham_var {
@@ -66,6 +68,13 @@ typedef struct s_params {
 	int		shift;
 	int		scale;
 	int		z_scale;
+	int		min_x;
+	int		min_y;
+	int		max_x;
+	int		max_y;
+	int		offset_x;
+	int		offset_y;
+	double		zoom_ratio;
 	double	angle;
 }			t_params;
 
@@ -76,14 +85,18 @@ void		process_file(char *path, t_params *params);
 void		count_width_and_height(int fd, t_params *params);
 void		free_params(t_params *params);
 void		parse_map(int fd, t_params *params);
-t_dot		*new_dot(int x, int y, int z, int c);
-void		test_print(t_list *map);
+t_dot		*new_dot(int x, int y, int z, int c, t_params *params);
 t_params	*params_init(void);
 void		draw_map(t_params *params);
-t_dot		*parse_coord(char *s, int x, int y);
 void		bresenham8(t_img *img, t_dot a, t_dot b);
 void		my_pixel_put(t_img *img, int x, int y, int color);
 void		isometric(t_dot *dot, double angle);
 void		transform_map(t_params *params);
+void		set_max_min(t_params *params, t_dot *dot);
+int			get_max(int a, int b);
+int			get_min(int a, int b);
+void		set_offset_x_y(t_params *params);
+void		set_zoom_ratio(t_params *params);
+double		get_dmin(double a, double b);
 
 #endif

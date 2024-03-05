@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:23:23 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/28 17:13:21 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/03/05 20:38:13 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	zoom(t_dot *dot, int scale, int z_scale)
 	dot->z *= z_scale;
 }
 
-void	shift(t_dot *dot, int shift)
+void	zoom_and_shift(t_params *params, t_dot *dot)
 {
-	dot->x += (shift + WIDTH / 3);
-	dot->y += (shift + HEIGHT / 3);
+	dot->x = dot->x * params->zoom_ratio + params->offset_x;
+	dot->y = dot->y * params->zoom_ratio + params->offset_y;
 }
 
 void	transform_map(t_params *params)
@@ -38,9 +38,19 @@ void	transform_map(t_params *params)
 		x = -1;
 		while (++x < params->map_width)
 		{
-			zoom(params->map[y][x], params->scale, params-> z_scale);
+			// zoom(params->map[y][x], params->scale, params-> z_scale);
 			isometric(params->map[y][x], params->angle);
-			shift(params->map[y][x], params->shift);
+			set_max_min(params, params->map[y][x]);
 		}
+	}
+	set_offset_x_y(params);
+	set_zoom_ratio(params);
+	printf("%f\n", params->zoom_ratio);
+	y = -1;
+	while (++y < params->map_height)
+	{
+		x = -1;
+		while (++x < params->map_width)
+			zoom_and_shift(params, params->map[y][x]);
 	}
 }

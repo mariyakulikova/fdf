@@ -15,11 +15,13 @@ SRCSLIST =	main.c \
 			parse_map.c \
 			process_file.c \
 			params.c \
+			params2.c \
 			test.c \
 			draw.c \
 			bresenham.c \
 			transform.c \
 			isometric.c \
+			utils.c \
 #SRCS = ./srcs/main.c
 SRCS = $(addprefix $(SRCSDIR), $(SRCSLIST))
 

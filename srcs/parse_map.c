@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:19:39 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/02/28 16:07:05 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/03/05 15:58:25 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	count_width_and_height(int fd, t_params *params)
 	}
 }
 
-t_dot	*parse_coord(char *s, int x, int y)
+t_dot	*parse_coord(char *s, int x, int y, t_params *params)
 {
 	char	*ptr;
 	char	*color;
@@ -51,7 +51,7 @@ t_dot	*parse_coord(char *s, int x, int y)
 	else
 		c = 0xFFFFFF;
 	z = ft_atoi(s);
-	dot = new_dot(x, y, z, c);
+	dot = new_dot(x, y, z, c, params);
 	if (!dot)
 		exit(EXIT_FAILURE);
 	return (dot);
@@ -72,7 +72,7 @@ static void	parse_line(char *line, t_params *params, int y)
 	*(map + y) = (t_dot **)malloc(sizeof(t_dot *) * params->map_width);
 	while (*(arr + x) && (x < params->map_width))
 	{
-		dot = parse_coord(*(arr + x), x, y);
+		dot = parse_coord(*(arr + x), x, y, params);
 		*(*(map + y) + x) = dot;
 		x++;
 	}
