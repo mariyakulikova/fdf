@@ -4,12 +4,10 @@ CCFLAGS = -Wextra -Wall -Werror
 RM = rm -f
 DEBUG = -g
 
-HEADDIR = ./includes/
-HEADLIST = fdf.h
-HEADERS = $(addprefix $(HEADDIR), $(HEADLIST))
+HEADDIR = .
+HEADERS = fdf.h
 
-SRCSDIR = ./srcs/
-SRCSLIST =	main.c \
+SRCS =	main.c \
 			hooks.c \
 			window.c \
 			parse_map.c \
@@ -21,11 +19,9 @@ SRCSLIST =	main.c \
 			transform.c \
 			isometric.c \
 			utils.c \
-#SRCS = ./srcs/main.c
-SRCS = $(addprefix $(SRCSDIR), $(SRCSLIST))
 
 OBJSDIR = ./objs/
-OBJSLIST = $(SRCSLIST:.c=.o)
+OBJSLIST = $(SRCS:.c=.o)
 OBJS = $(addprefix $(OBJSDIR), $(OBJSLIST))
 
 LIBFTDIR = ./libft/
@@ -35,7 +31,6 @@ MLXDIR = ./minilibx-linux/
 MLX = ${MLXDIR}libmlx.a
 
 LIBS = -L${LIBFTDIR} -L${MLXDIR} -lft -lmlx -lXext -L/usr/lib/X11 -lX11 -lm
-# LIBS			:= -L${LIBFTDIR} -L${MLXDIR} -lft -lmlx -lXext -lX11 -lm
 INCS = -I${HEADDIR} -I${LIBFTDIR} -I${MLXDIR}
 
 all: $(NAME)
@@ -54,7 +49,7 @@ $(LIBFT):
 $(OBJSDIR):
 	mkdir -p $(OBJSDIR)
 
-$(OBJSDIR)%.o: $(SRCSDIR)%.c $(HEADERS)
+$(OBJSDIR)%.o: %.c $(HEADERS)
 	$(CC) $(FLAGS) $(DEBUG) $(INCS) -c $< -o $@
 
 clean:
