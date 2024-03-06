@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:47:12 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/03/06 12:05:29 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/03/06 15:17:26 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,6 @@ typedef struct s_params {
 	t_dot	***map;
 	int		map_width;
 	int		map_height;
-	int		shift;
-	int		scale;
-	int		z_scale;
 	int		min_x;
 	int		min_y;
 	int		max_x;

@@ -6,18 +6,11 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:23:23 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/03/06 11:00:10 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/03/06 14:48:31 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-void	zoom(t_dot *dot, int scale, int z_scale)
-{
-	dot->x *= scale;
-	dot->y *= scale;
-	dot->z *= z_scale;
-}
 
 void	zoom_and_shift(t_params *params, t_dot *dot)
 {

@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 21:30:09 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/03/06 14:34:31 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/03/06 15:21:28 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ t_params	*params_init(void)
 	params->min_y = 0;
 	params->offset_x = 0;
 	params->offset_y = 0;
-	params->scale = 10;
-	params->z_scale = 2;
 	params->angle = 0.523599;
 	return (params);
 }
