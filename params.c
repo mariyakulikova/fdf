@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 21:30:09 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/03/06 10:59:16 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/03/06 14:34:31 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ t_params	*params_init(void)
 	params->map_width = 0;
 	params->max_x = 0;
 	params->max_y = 0;
-	params->max_x = 0;
-	params->max_y = 0;
+	params->min_x = 0;
+	params->min_y = 0;
 	params->offset_x = 0;
 	params->offset_y = 0;
 	params->scale = 10;

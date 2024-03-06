@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 13:26:26 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/03/06 10:48:04 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/03/06 14:12:08 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,10 @@ void	bresenham8(t_img *img, t_dot a, t_dot b)
 	i = 0;
 	while (i++ < vars.d)
 	{
-		my_pixel_put(img, a.x, a.y, 0xFFFFFF);
+		if (b.z > 0 || a.z > 0)
+			my_pixel_put(img, a.x, a.y, 0xFFFFFF);
+		else
+			my_pixel_put(img, a.x, a.y, 0xFF0000);
 		vars.x_er += vars.dx;
 		vars.y_er += vars.dy;
 		if (vars.x_er >= vars.d)
