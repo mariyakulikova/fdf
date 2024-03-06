@@ -27,7 +27,7 @@ OBJS = $(addprefix $(OBJSDIR), $(OBJSLIST))
 LIBFTDIR = ./libft/
 LIBFT = $(LIBFTDIR)libft.a
 
-MLXDIR = ./minilibx-linux/
+MLXDIR = ../minilibx-linux/
 MLX = ${MLXDIR}libmlx.a
 
 LIBS = -L${LIBFTDIR} -L${MLXDIR} -lft -lmlx -lXext -L/usr/lib/X11 -lX11 -lm
@@ -37,11 +37,6 @@ all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJSDIR) $(OBJS)
 	$(CC) $(FLAGS) $(DEBUG) $(OBJS) -o $@ $(LIBS) $(INCS)
-
-$(MLX):
-	git submodule init
-	git submodule update
-	make -C $(MLXDIR)
 
 $(LIBFT):
 	make -C $(LIBFTDIR)
@@ -55,7 +50,6 @@ $(OBJSDIR)%.o: %.c $(HEADERS)
 clean:
 	$(RM) -r $(OBJSDIR)
 	make -C $(LIBFTDIR) clean
-	make -C $(MLXDIR) clean
 
 fclean: clean
 	$(RM) $(NAME)
@@ -67,6 +61,3 @@ re: fclean all
 
 test: re
 	./$(NAME) test_maps/42.fdf
-
-#bonustest:		bonus
-#				./${BONUSNAME} test_maps/42.fdf
