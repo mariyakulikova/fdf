@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 15:42:49 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/03/06 17:01:42 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/03/06 17:04:14 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ void	process_file(char *path, t_params *params)
 {
 	int	fd;
 
-	fd = open_file(path);
+	fd = open_file(path, params);
 	count_width_and_height(fd, params);
 	close(fd);
-	fd = open_file(path);
+	fd = open_file(path, params);
 	parse_map(fd, params);
 	close(fd);
 }
