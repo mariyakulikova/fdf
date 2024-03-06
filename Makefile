@@ -16,7 +16,6 @@ SRCSLIST =	main.c \
 			process_file.c \
 			params.c \
 			params2.c \
-			test.c \
 			draw.c \
 			bresenham.c \
 			transform.c \

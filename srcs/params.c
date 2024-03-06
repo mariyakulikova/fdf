@@ -6,21 +6,21 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 21:30:09 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/03/05 15:56:43 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/03/06 10:59:16 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_dot	*new_dot(int x, int y, int z, int c, t_params *params)
+t_dot	*new_dot(int x, int y, int z, int c)
 {
 	t_dot	*dot;
 
 	dot = (t_dot *)malloc(sizeof(t_dot));
 	if (!dot)
 		return (NULL);
-	dot->x = -STEP * params->map_width / 2 + STEP * x;
-	dot->y = -STEP * params->map_height / 2 + STEP * y;
+	dot->x = x;
+	dot->y = y;
 	dot->z = z;
 	dot->color = c;
 	return (dot);

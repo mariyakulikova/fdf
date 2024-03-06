@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:19:39 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/03/05 15:58:25 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/03/06 11:02:49 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ t_dot	*parse_coord(char *s, int x, int y, t_params *params)
 	else
 		c = 0xFFFFFF;
 	z = ft_atoi(s);
-	dot = new_dot(x, y, z, c, params);
+	dot = new_dot(-STEP * params->map_width / 2 + STEP * x, \
+					-STEP * params->map_height / 2 + STEP * y, z, c, params);
 	if (!dot)
 		exit(EXIT_FAILURE);
 	return (dot);

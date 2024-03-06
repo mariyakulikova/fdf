@@ -6,13 +6,11 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:23:23 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/03/05 20:38:13 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/03/06 11:00:10 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-
 
 void	zoom(t_dot *dot, int scale, int z_scale)
 {
@@ -38,14 +36,12 @@ void	transform_map(t_params *params)
 		x = -1;
 		while (++x < params->map_width)
 		{
-			// zoom(params->map[y][x], params->scale, params-> z_scale);
 			isometric(params->map[y][x], params->angle);
 			set_max_min(params, params->map[y][x]);
 		}
 	}
 	set_offset_x_y(params);
 	set_zoom_ratio(params);
-	printf("%f\n", params->zoom_ratio);
 	y = -1;
 	while (++y < params->map_height)
 	{

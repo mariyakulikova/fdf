@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:47:12 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/03/05 20:40:13 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/03/06 11:01:12 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@
 # include "libft.h"
 # include "mlx.h"
 
-# define HEIGHT 900
-# define WIDTH 1400
-# define PADDING 0.8
+# define HEIGHT 600
+# define WIDTH 900
+# define WIN_CEF 0.95
 # define STEP 10
 # define TITLE "FdF"
 
@@ -41,7 +41,6 @@ typedef struct s_bresenham_var {
 	int	d;
 }			t_bresenham_var;
 
-
 typedef struct s_img
 {
 	void	*ptr;
@@ -52,9 +51,9 @@ typedef struct s_img
 }			t_img;
 
 typedef struct s_dot {
-	int			x;
-	int			y;
-	int			z;
+	int				x;
+	int				y;
+	int				z;
 	unsigned int	color;
 }			t_dot;
 
@@ -74,7 +73,7 @@ typedef struct s_params {
 	int		max_y;
 	int		offset_x;
 	int		offset_y;
-	double		zoom_ratio;
+	double	zoom_ratio;
 	double	angle;
 }			t_params;
 
@@ -85,7 +84,7 @@ void		process_file(char *path, t_params *params);
 void		count_width_and_height(int fd, t_params *params);
 void		free_params(t_params *params);
 void		parse_map(int fd, t_params *params);
-t_dot		*new_dot(int x, int y, int z, int c, t_params *params);
+t_dot		*new_dot(int x, int y, int z, int c);
 t_params	*params_init(void);
 void		draw_map(t_params *params);
 void		bresenham8(t_img *img, t_dot a, t_dot b);
