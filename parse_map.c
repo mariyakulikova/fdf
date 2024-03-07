@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 12:19:39 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/03/06 14:35:07 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/03/07 12:55:06 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,19 @@ t_dot	*parse_coord(char *s, int x, int y, t_params *params)
 	return (dot);
 }
 
+static void	free_split(char **split)
+{
+	int	i;
+
+	i = 0;
+	while (*(split + i))
+	{
+		free(*(split + i));
+		i++;
+	}
+	free(split);
+}
+
 static void	parse_line(char *line, t_params *params, int y)
 {
 	char	**arr;
@@ -68,10 +81,7 @@ static void	parse_line(char *line, t_params *params, int y)
 		*(*(map + y) + x) = dot;
 		x++;
 	}
-	x--;
-	while (x >= 0)
-		free(*(arr + x--));
-	free(arr);
+	free_split(arr);
 }
 
 void	parse_map(int fd, t_params *params)
